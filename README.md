@@ -10,3 +10,11 @@
 $ npm install
 $ npm run start
 ```
+
+## Login
+
+**Email**: `jan@fakelog.cf`
+
+**Password**: `jan123`
+
+**Log**: `Fakelog` for [fakelog.cf](fakelog.cf) or `Fakelog lokalnie` for local
