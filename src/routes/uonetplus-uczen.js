@@ -402,9 +402,9 @@ router.all("/Oceny.mvc/Get", (req, res) => {
 
     res.json({
         "data": {
-            "IsSrednia": false,
-            "IsPunkty": false,
-            "Oceny": require("../../data/api/dictionaries/Przedmioty").map(item => {
+            "IsSrednia": true,
+            "IsPunkty": true,
+            "Oceny": require("../../data/api/dictionaries/Przedmioty").map((item, index) => {
                 return {
                     "Przedmiot": item.Nazwa,
                     "Pozycja": item.Pozycja,
@@ -423,10 +423,10 @@ router.all("/Oceny.mvc/Get", (req, res) => {
                     }),
                     "ProponowanaOcenaRoczna": dictMap.getByValue(summary.OcenyPrzewidywane, "IdPrzedmiot", item.Id, {"Wpis": ""}).Wpis,
                     "OcenaRoczna": dictMap.getByValue(summary.OcenyPrzewidywane, "IdPrzedmiot", item.Id, {"Wpis": ""}).Wpis,
-                    "ProponowanaOcenaRocznaPunkty": null,
-                    "OcenaRocznaPunkty": null,
-                    "Srednia": dictMap.getByValue(summary.SrednieOcen, "IdPrzedmiot", item.Id, {"Wpis": 0}).Wpis,
-                    "SumaPunktow": null,
+                    "ProponowanaOcenaRocznaPunkty": index * 2.5 + 1 + "",
+                    "OcenaRocznaPunkty": index * 3 + 2 + "",
+                    "Srednia": parseFloat(dictMap.getByValue(summary.SrednieOcen, "IdPrzedmiot", item.Id, {"SredniaOcen": "0"}).SredniaOcen.replace(/,/,'.')),
+                    "SumaPunktow": dictMap.getByValue(summary.SrednieOcen, "IdPrzedmiot", item.Id, {"SumaPunktow": "0"}).SumaPunktow,
                     "WidocznyPrzedmiot": false
                 };
             }),
@@ -594,7 +594,7 @@ router.all("/RejestracjaUrzadzeniaToken.mvc/Get", (req, res) => {
             "CustomerSymbol": student.JednostkaSprawozdawczaSymbol,
             "QrCodeContent": `CERT#${base}/Default/mobile-api#FK100000#ENDCERT`,
             "QrCodeContentEncoded": "xxx", // TODO: create and use qr encrypt
-            "QrCodeImage": "<img src=\"data:image/png;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==\" alt=\"Kod QR\" title=\"Kod QR\" height=\"400\" width=\"400\" />",
+            "QrCodeImage": "<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAC/klEQVR4nO2bO7KkMAxFRREQegkspZcGS2MpXgJhB1RrrJ9Nz9QLJnziKmlw+zi6JesHEezJ9mK3o71wXT60nXN7aw+0Xm2tMO+0xK43kFTIqSKY+ChXQ9rjpiux6SjtkLqwaWUFkgyZRQeTCkZ37k0iegjzZYISwdgDECAdaTubh2Hd2Q6Y2k6xAuQJCM3mRrb23jbE/SIrFUhWRFdNMLS2nY6IfPwQ8SL2CyQZwm4WXXhsSa8moX0Vv+HRhRuQpyM3m32pXKY6u2j0fvnJgPxuxATznvTHPEgzZTfTkelEBbVVIMmQ9hReQGPLvSunFyJWR0IwQDIhehlEmMHn7Hll9QfLLM44CcijEatTfTwA9UKEpqJ6v7BkJYZQeBggWRAqLhhLRRdLRnTnVkUipwSZUpgSD2P3D5AsiOpANohgyPTAzlYJM1RH5PcLkFwIFXaTO0IKEfRVgqYi9SgeQSYQILvupJ6DXNTDUf66X4bGgKRARmzJXRB+0ZiFoG5OCUgaJHTwkvXqHSsa7sJN+5m3cBRIBoR6m7Knk/2Br/H/vWIB5NGIrC8Rji638YbdBOVtL7UVSCrkdZ998lRUZ1q8wS0n7eSCskOA5EEsuvhEp1usFyH7ka4scxdA0iDuLkwQbHnEbMMtWw8zqg+3MJDHI9KK0FS0x6Vb/Geu5vSexb1uCSQJItZTUVuSKZfDLxobb1jZqtquMSBZkNGxOr3BrayONlEcyWwfVXzFlkAyID4Hq93JqnmlHtIWtFtdonlx61YDeTaym8bmkYrqIbtVrWMW7vtKApIDcXkc5Z6KRjLicw5uO5BcyLA+60a+U4IK6jMt6lcqAcmEvEIM1o2ObrVEF3JZmGDqX7NwQB6MWGVqGsnGdu9tec/CN25AsiHxhV2PHsZwi3qYuF/+DUeB5EKoNy/UZt+tGeoPggGSBbG8kuOyiG51L0NFOArkyYiqaYpkRFLRi7xOFVVrQTiq2kASIe5EwsPY17VWiNDDdA72Hf4GSCoEBvsP+wMVsjBH3JwgAAAAAABJRU5ErkJggg==\" alt=\"Kod QR\" title=\"Kod QR\" height=\"400\" width=\"400\" />",
             "ImageSize": 400,
             "IdLogin": student.UzytkownikLoginId,
             "LoginValue": student.UzytkownikLogin,

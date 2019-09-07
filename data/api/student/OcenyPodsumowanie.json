@@ -37,12 +37,24 @@
   ],
   "SrednieOcen": [
     {
-      "IdPrzedmiot": 303,
-      "Wpis": "4"
+      "IdPrzedmiot": 300,
+      "SredniaOcen": "4,13",
+      "SumaPunktow": "123"
     },
     {
-      "IdPrzedmiot": 304,
-      "Wpis": "2.5"
+      "IdPrzedmiot": 301,
+      "SredniaOcen": "4,1",
+      "SumaPunktow": "234"
+    },
+    {
+      "IdPrzedmiot": 302,
+      "SredniaOcen": "1,99",
+      "SumaPunktow": "345"
+    },
+    {
+      "IdPrzedmiot": 303,
+      "SredniaOcen": "4",
+      "SumaPunktow": "456"
     }
   ]
 }
