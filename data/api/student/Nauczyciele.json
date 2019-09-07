@@ -1,6 +1,25 @@
 {
   "NauczycieleSzkola": [
-
+    {
+      "IdPracownik": 1,
+      "IdPrzedmiot": 0,
+      "Rola": "Dyrektor"
+    },
+    {
+      "IdPracownik": 2,
+      "IdPrzedmiot": 0,
+      "Rola": "Dyrektor"
+    },
+    {
+      "IdPracownik": 3,
+      "IdPrzedmiot": 0,
+      "Rola": "Pedagog"
+    },
+    {
+      "IdPracownik": 4,
+      "IdPrzedmiot": 0,
+      "Rola": "Wychowawca"
+    }
   ],
   "NauczycielePrzedmioty": [
 
